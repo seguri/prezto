@@ -44,23 +44,23 @@ Updating
 
   1. Configure upstream repository:
 
-      git remote add author https://github.com/sorin-ionescu/prezto.git
+        git remote add author https://github.com/sorin-ionescu/prezto.git
     
   2. Fetch the branches and their respective commits from the upstream repository:
 
-      git fetch author
+        git fetch author
       
   3. Check out your fork's local `master` branch:
   
-      git checkout master
+        git checkout master
 
   4. Merge the changes from `author/master` into your local master branch:
   
-      git merge author/master
+        git merge author/master
 
   5. Update submodules:
   
-      git submodule update --init --recursive
+        git submodule update --init --recursive
 
 Usage
 -----
