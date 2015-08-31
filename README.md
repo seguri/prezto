@@ -42,9 +42,25 @@ window or tab.
 Updating
 --------
 
-Pull the latest changes and update submodules.
+  1. Configure upstream repository:
 
-    git pull && git submodule update --init --recursive
+      git remote add author https://github.com/sorin-ionescu/prezto.git
+    
+  2. Fetch the branches and their respective commits from the upstream repository:
+
+      git fetch author
+      
+  3. Check out your fork's local `master` branch:
+  
+      git checkout master
+
+  4. Merge the changes from `author/master` into your local master branch:
+  
+      git merge author/master
+
+  5. Update submodules:
+  
+      git submodule update --init --recursive
 
 Usage
 -----
