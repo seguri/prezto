@@ -1,0 +1,13 @@
+# Unsupported in ZSH, use bindkey
+# To find the codes used below:
+# I didn't completely undertand it, internet says:
+# In console, press C-v, then the key to be bound, it will display the code
+
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+"\e\e[C": forward-word      # Alt + right
+"\e\e[D": backward-word     # Alt + left
+
+#"\e[C": end-of-line         # Command + right
+#"\e[D": beginning-of-line   # Command + left
