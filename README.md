@@ -22,7 +22,7 @@ version is 4.3.17.
   3. Create a new Zsh configuration by copying the Zsh configuration files
      provided:
 
-        "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/link-rcfiles.sh
+        "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/INSTALL.sh
 
   4. Set Zsh as your default shell:
 
