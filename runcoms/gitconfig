@@ -1,6 +1,16 @@
+[core]
+	editor = sublw
+	excludesfile = ~/.gitignore_global
 [user]
+	name = Marco Seguri
 	email = seguri@users.noreply.github.com
+[i18n]
+	commitEncoding = utf8
+	logOutputEncoding = utf8
 [push]
 	default = simple
 [credential]
 	helper = osxkeychain
+[alias]
+	uncommit = reset --soft HEAD^
+	unstage = reset HEAD --
