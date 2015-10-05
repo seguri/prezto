@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='vim'
+export VISUAL='subl'
 export PAGER='less'
 
 #
@@ -33,6 +33,10 @@ fi
 # Paths
 #
 
+export ANDROID_HOME=/Applications/android-sdk/
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
+
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
 
@@ -43,6 +47,11 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+  $JAVA_HOME/bin
+  $ANDROID_HOME/build-tools/22.0.0
+  $ANDROID_HOME/platform-tools
+  $ANDROID_HOME/tools
+  ~/bin
   /usr/local/{bin,sbin}
   $path
 )
