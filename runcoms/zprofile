@@ -33,7 +33,7 @@ fi
 # Paths
 #
 
-export ANDROID_HOME=/Applications/android-sdk/
+export ANDROID_HOME=/Applications/android-sdk
 #export JAVA_HOME=/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home
 
