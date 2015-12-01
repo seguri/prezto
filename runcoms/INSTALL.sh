@@ -9,5 +9,6 @@ setopt EXTENDED_GLOB
 #   N  set NULL_GLOB (no errors on empty list)
 #
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^*.(md|sh)(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  dest="${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  [ -L "$dest" ] && echo "SKIP: $dest" || ln -v -s "$rcfile" "$dest"; 
 done
