@@ -12,5 +12,6 @@
 [credential]
 	helper = osxkeychain
 [alias]
+	discard = checkout --
 	uncommit = reset --soft HEAD^
 	unstage = reset HEAD --
