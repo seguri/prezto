@@ -37,8 +37,6 @@ export ANDROID_NDK=/Applications/android-ndk
 export ANDROID_SDK=/Volumes/UPPER/Applications/android-sdk
 # Java on OSX; select desired version
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-# Pip directory
-export PIP_HOME=$HOME/Library/Python/2.7
 export POSTGRES=/Applications/Postgres.app/Contents/Versions/9.5
 # I need this for svnrdump
 export XCODE_DEV=/Applications/Xcode.app/Contents/Developer
@@ -58,9 +56,9 @@ path=(
   $ANDROID_SDK/platform-tools
   $ANDROID_SDK/tools
   $JAVA_HOME/bin
-  $PIP_HOME/bin
   $POSTGRES/bin
   $XCODE_DEV/usr/bin
+  ~/.pyenv/shims
   ~/Secure/bin
   ~/bin
   /usr/local/{bin,sbin}
