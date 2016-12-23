@@ -1,16 +1,19 @@
 " Vundle prerequisites
 set nocompatible
 filetype off
-" Include Vundle in runtime and init
+
+" Include Vundle in runtime
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" Let Vundle manage Vundle
+
+" Let Vundle manage Vundle (required). Your plugins below
 Plugin 'VundleVim/Vundle.vim'
-" Plugins
 Plugin 'editorconfig/editorconfig-vim'
-" Vundle end
+
+" End of Vundle prerequisites
 call vundle#end()
 filetype plugin indent on
+
 " My settings
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set secure
@@ -26,3 +29,4 @@ set nobackup
 set nowritebackup
 set noswapfile
 set number
+syntax on
