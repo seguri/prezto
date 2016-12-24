@@ -34,10 +34,19 @@ fi
 #
 
 export ANDROID_NDK=/Applications/android-ndk
-export ANDROID_SDK=/Volumes/UPPER/Applications/android-sdk
+
+if [[ -d /Applications/android-sdk ]]; then
+	ANDROID_SDK=/Applications/android-sdk
+elif [[ -d /Volumes/UPPER/Applications/android-sdk ]]; then
+	ANDROID_SDK=/Volumes/UPPER/Applications/android-sdk
+fi
+export ANDROID_SDK
+
 # Java on OSX; select desired version
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
 export POSTGRES=/Applications/Postgres.app/Contents/Versions/9.5
+
 # I need this for svnrdump
 export XCODE_DEV=/Applications/Xcode.app/Contents/Developer
 
