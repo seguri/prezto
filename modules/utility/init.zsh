@@ -158,7 +158,7 @@ fi
 # Miscellaneous
 
 # Serves a directory via HTTP.
-alias http-serve='python -m SimpleHTTPServer'
+alias http-serve='python3 -m http.server'
 
 #
 # Functions
