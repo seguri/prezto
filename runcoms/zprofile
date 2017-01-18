@@ -35,9 +35,11 @@ fi
 
 export ANDROID_NDK=/Applications/android-ndk
 export ANDROID_SDK=/Volumes/UPPER/Applications/android-sdk
+export CLOUDSDK_HOME=~/Downloads/google-cloud-sdk
+export EAP_HOME=~/Downloads/jboss-eap-7.0.0
 # Java on OSX; select desired version
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export POSTGRES=/Applications/Postgres.app/Contents/Versions/9.5
+export POSTGRES=/Applications/Postgres.app/Contents/Versions/9.6
 # I need this for svnrdump
 export XCODE_DEV=/Applications/Xcode.app/Contents/Developer
 
@@ -55,9 +57,12 @@ path=(
   $ANDROID_SDK/build-tools/*(/om[1])
   $ANDROID_SDK/platform-tools
   $ANDROID_SDK/tools
+  $CLOUDSDK_HOME/bin
+  $EAP_HOME/bin
   $JAVA_HOME/bin
   $POSTGRES/bin
   $XCODE_DEV/usr/bin
+  ~/.nodenv/shims
   ~/.pyenv/shims
   ~/Secure/bin
   ~/bin
