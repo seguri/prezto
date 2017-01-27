@@ -43,6 +43,10 @@ function prompt_sorin_pwd {
   fi
 }
 
+function prompt_seguri_time {
+  _prompt_seguri_time="$(date +%T)"
+}
+
 function prompt_sorin_git_info {
   if (( _prompt_sorin_precmd_async_pid > 0 )); then
     # Append Git status.
@@ -78,6 +82,9 @@ function prompt_sorin_precmd {
 
   # Format PWD.
   prompt_sorin_pwd
+
+  # Format time.
+  prompt_seguri_time
 
   # Define prompts.
   RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"}'
@@ -132,7 +139,7 @@ function prompt_sorin_setup {
     'status' '$(coalesce "%b" "%p" "%c")%s%A%B%S%a%d%m%r%U%u'
 
   # Define prompts.
-  PROMPT='%n@%m:${_prompt_sorin_pwd}${editor_info[keymap]} '
+  PROMPT='${_prompt_seguri_time} %n@%m:${_prompt_sorin_pwd}${editor_info[keymap]} '
   RPROMPT=''
   SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 }
