@@ -29,4 +29,5 @@ set nobackup
 set nowritebackup
 set noswapfile
 set number
+set ruler
 syntax on
