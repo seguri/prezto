@@ -34,7 +34,7 @@ fi
 #
 
 export ANDROID_NDK=/Applications/android-ndk
-export ANDROID_SDK=/Volumes/UPPER/Applications/android-sdk
+export ANDROID_SDK=/Applications/android-sdk
 export CLOUDSDK_HOME=~/Downloads/google-cloud-sdk
 export EAP_HOME=~/Downloads/jboss-eap-7.0.0
 # Java on OSX; select desired version
