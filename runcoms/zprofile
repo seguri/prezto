@@ -64,6 +64,7 @@ path=(
   $XCODE_DEV/usr/bin
   ~/.nodenv/shims
   ~/.pyenv/shims
+  ~/.rbenv/shims
   ~/Secure/bin
   ~/bin
   /usr/local/{bin,sbin}
