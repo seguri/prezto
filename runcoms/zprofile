@@ -39,7 +39,8 @@ export CLOUDSDK_HOME=~/Downloads/google-cloud-sdk
 export EAP_HOME=~/Downloads/jboss-eap-7.0.0
 # Java on OSX; select desired version
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export POSTGRES=/Applications/Postgres.app/Contents/Versions/9.6
+# Remember to: cd /Applications/Postgres.app/Contents/Versions && ln -s 9.* default
+export POSTGRES=/Applications/Postgres.app/Contents/Versions/default
 # I need this for svnrdump
 export XCODE_DEV=/Applications/Xcode.app/Contents/Developer
 
