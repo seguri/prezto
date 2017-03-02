@@ -36,6 +36,7 @@ fi
 export ANDROID_NDK=/Applications/android-ndk
 export ANDROID_SDK=/Applications/android-sdk
 export CLOUDSDK_HOME=~/Downloads/google-cloud-sdk
+export GOPATH=~/go
 export EAP_HOME=~/Downloads/jboss-eap-7.0.0
 # Java on OSX; select desired version
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
@@ -60,6 +61,7 @@ path=(
   $ANDROID_SDK/tools
   $CLOUDSDK_HOME/bin
   $EAP_HOME/bin
+  $GOPATH/bin
   $JAVA_HOME/bin
   $POSTGRES/bin
   $XCODE_DEV/usr/bin
