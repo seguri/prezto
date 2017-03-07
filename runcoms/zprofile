@@ -65,10 +65,7 @@ path=(
   $JAVA_HOME/bin
   $POSTGRES/bin
   $XCODE_DEV/usr/bin
-  ~/.goenv/shims
   ~/.nodenv/shims
-  ~/.pyenv/shims
-  ~/.rbenv/shims
   ~/Secure/bin
   ~/bin
   /usr/local/{bin,sbin}

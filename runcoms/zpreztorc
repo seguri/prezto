@@ -34,7 +34,9 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'fasd' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'python' \
+  'ruby'
 
 #
 # Deer
