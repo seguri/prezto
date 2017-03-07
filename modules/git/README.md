@@ -330,6 +330,6 @@ Authors
 [3]: https://www.github.com
 [4]: http://www.manpagez.com/man/8/gpt/
 [5]: http://linux.die.net/man/1/gs
-[6]: https://github.com/sorin-ionescu/prezto/issues
+[6]: https://github.com/zsh-users/prezto/issues
 [7]: https://github.com/sorin-ionescu/prezto/issues/219
 [8]: http://www.kernel.org/pub/software/scm/git/docs/git-log.html
