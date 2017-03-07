@@ -60,11 +60,11 @@ Updating
 
   1. Configure upstream repository:
 
-        git remote add author https://github.com/sorin-ionescu/prezto.git
+        git remote add zsh-users https://github.com/zsh-users/prezto.git
     
   2. Fetch the branches and their respective commits from the upstream repository:
 
-        git fetch author
+        git fetch zsh-users
       
   3. Check out your fork's local `master` branch:
   
@@ -72,7 +72,7 @@ Updating
 
   4. Merge the changes from `author/master` into your local master branch:
   
-        git merge author/master
+        git merge zsh-users/master
 
   5. Update submodules:
   
