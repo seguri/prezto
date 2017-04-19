@@ -25,6 +25,18 @@ improve its performance, do not hesitate to fork and send pull requests.
    - The pull requests will be merged after a senate majority 
      of the [Project Leaders][6] approve it. (#41)
 
+#### Code Style
+
+   - Indent using 2 spaces. No tabs.
+   - Put `; do` and `; then` on the same line as the `while`, `for` or `if`.
+   - Local variables should be used whenever possible.
+   - Use `snake_case` for variable and function naming.
+   - Local variables should be lower cased.
+   - Global variables should be upper cased.
+   - Use `$(command)` instead of backticks.
+   - Avoid `eval` if possible.
+   - Prefer `zstyle` over environment variables for configuration.
+
 #### Modules
 
    - A *README.md* must be present.
