@@ -20,3 +20,4 @@
 	info = !echo && git config --list | sort | column -s '=' -t && echo
 	alias = config --get-regexp ^alias\\.
     list-submodules = !grep path .gitmodules | sed 's/.*= //'
+    diffmerge = difftool --no-prompt --extcmd="diffmerge -- $4 $3"
