@@ -5,25 +5,6 @@ Prezto is the configuration framework for [Zsh][1]; it enriches the command line
 interface environment with sane defaults, aliases, functions, auto completion,
 and prompt themes.
 
-Upgrading from sorin-ionescu/prezto
------------------------------------
-
-Prezto's [original maintainer][original] abandoned the project. This is a
-young, community-maintained fork, which was created [in December 2016][fork].
-
-To upgrade your Prezto installation to use the new fork, run these commands:
-
-    cd "${ZDOTDIR:-$HOME}/.zprezto"
-    git remote set-url origin https://github.com/zsh-users/prezto.git
-    git pull
-    git submodule update --init --recursive
-
-This assumes a typical installation. If you have forked or modified the
-project your steps may vary.
-
-[original]: https://github.com/sorin-ionescu/prezto
-[fork]: https://github.com/sorin-ionescu/prezto#1239
-
 Installation
 ------------
 
@@ -60,11 +41,11 @@ Updating
 
   1. Configure upstream repository:
 
-        git remote add zsh-users https://github.com/zsh-users/prezto.git
+        git remote add sorin https://github.com/sorin-ionescu/prezto.git
     
   2. Fetch the branches and their respective commits from the upstream repository:
 
-        git fetch zsh-users
+        git fetch sorin
       
   3. Check out your fork's local `master` branch:
   
@@ -72,7 +53,7 @@ Updating
 
   4. Merge the changes from `author/master` into your local master branch:
   
-        git merge zsh-users/master
+        git merge sorin/master
 
   5. Update submodules:
   
@@ -111,15 +92,6 @@ Resources
 ---------
 
 The [Zsh Reference Card][7] and the [zsh-lovers][8] man page are indispensable.
-
-Project leaders
----------------
-
-These are the active contributors that donate time on a consistent basis to help guide the project:
-
-* [facastagnini](https://github.com/facastagnini)
-* [johnpneumann](https://github.com/johnpneumann)
-* [paulmelnikow](https://github.com/paulmelnikow)
 
 License
 -------
