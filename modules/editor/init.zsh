@@ -153,8 +153,8 @@ function zle-line-finish {
     echoti rmkx
   fi
 
-  # Editor info is not updated as it causes unnecessary refresh in previous prompt.
-  # See discussion here: https://github.com/zsh-users/prezto/pull/17
+  # Update editor information.
+  zle editor-info
 }
 zle -N zle-line-finish
 

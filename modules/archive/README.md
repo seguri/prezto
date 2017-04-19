@@ -43,4 +43,4 @@ Authors
   - [Sorin Ionescu](https://github.com/sorin-ionescu)
   - [Matt Hamilton](https://github.com/Eriner)
 
-[1]: https://github.com/zsh-users/prezto/issues
+[1]: https://github.com/sorin-ionescu/prezto/issues

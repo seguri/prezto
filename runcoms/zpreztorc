@@ -38,12 +38,6 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'ruby'
 
-#
-# Deer
-#
-
-# Set key bindings
-# zstyle ':prezto:module:deer' key-bindings '^k'
 
 #
 # Autosuggestions
@@ -183,4 +177,4 @@ zstyle ':prezto:module:prompt' theme 'seguri'
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+# zstyle ':prezto:module:tmux:iterm' integrate 'yes'
