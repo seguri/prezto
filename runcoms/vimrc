@@ -9,6 +9,8 @@ call vundle#begin()
 " Let Vundle manage Vundle (required). Your plugins below
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'valloric/youcompleteme'
+Plugin 'vim-syntastic/syntastic'
 
 " End of Vundle prerequisites
 call vundle#end()
@@ -33,3 +35,8 @@ set noswapfile
 set number
 set ruler
 syntax on
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
