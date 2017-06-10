@@ -17,6 +17,7 @@ call vundle#end()
 filetype plugin indent on
 
 " My settings
+syntax on
 set encoding=utf-8 fileencoding=utf-8 termencoding=utf-8
 set secure
 set textwidth=0
@@ -26,6 +27,8 @@ set softtabstop=4
 set expandtab
 set smarttab
 set backspace=indent,eol,start
+set nolist
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 set autoindent
 set cursorline
 set ignorecase
@@ -34,7 +37,6 @@ set nowritebackup
 set noswapfile
 set number
 set ruler
-syntax on
 
 " Syntastic
 set statusline+=%#warningmsg#
