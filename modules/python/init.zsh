@@ -9,10 +9,12 @@
 # Load manually installed pyenv into the shell session.
 if [[ -s "$HOME/.pyenv/bin/pyenv" ]]; then
   path=("$HOME/.pyenv/bin" $path)
+  export PYENV_ROOT=$(pyenv root)
   eval "$(pyenv init -)"
 
 # Load package manager installed pyenv into the shell session.
 elif (( $+commands[pyenv] )); then
+  export PYENV_ROOT=$(pyenv root)
   eval "$(pyenv init -)"
 
 # Prepend PEP 370 per user site packages directory, which defaults to
@@ -76,43 +78,70 @@ function _python-workon-cwd {
   fi
 }
 
-# Load virtualenvwrapper into the shell session, unless requested not to
-if zstyle -T ':prezto:module:python' skip-virtualenvwrapper-init; then
+# Load auto workon cwd hook
+if zstyle -t ':prezto:module:python:virtualenv' auto-switch 'yes'; then
+  # Auto workon when changing directory
+  add-zsh-hook chpwd _python-workon-cwd
+fi
+
+# Load virtualenvwrapper into the shell session, if pre-requisites are met
+# and unless explicitly requested not to
+if (( $+VIRTUALENVWRAPPER_VIRTUALENV || $+commands[virtualenv] )) && \
+  zstyle -T ':prezto:module:python:virtualenv' initialize ; then
   # Set the directory where virtual environments are stored.
   export WORKON_HOME="${WORKON_HOME:-$HOME/.virtualenvs}"
 
   # Disable the virtualenv prompt.
   VIRTUAL_ENV_DISABLE_PROMPT=1
 
-  if (( $+commands[pyenv-virtualenvwrapper] )); then
-    pyenv virtualenvwrapper
-  elif (( $+commands[pyenv-virtualenv-init] )); then
-    eval "$(pyenv virtualenv-init -)"
-  elif (( $+commands[virtualenvwrapper_lazy.sh] )); then
-    source "$commands[virtualenvwrapper_lazy.sh]"
-  elif (( $+commands[virtualenvwrapper.sh] )); then
-    source "$commands[virtualenvwrapper.sh]"
+  # Create a sorted array of available virtualenv related 'pyenv' commands to
+  # look for plugins of interest. Scanning shell '$path' isn't enough as they
+  # can exist in 'pyenv' synthesized paths (e.g., '~/.pyenv/plugins') instead.
+  local -a pyenv_plugins
+  if (( $+commands[pyenv] )); then
+    pyenv_plugins=(${(@oM)${(f)"$(pyenv commands --no-sh 2>/dev/null)"}:#virtualenv*})
   fi
+
+  if (( $pyenv_plugins[(i)virtualenv-init] <= $#pyenv_plugins )); then
+    # Enable 'virtualenv' with 'pyenv'.
+    eval "$(pyenv virtualenv-init -)"
+
+    # Optionally activate 'virtualenvwrapper' plugin when available.
+    if (( $pyenv_plugins[(i)virtualenvwrapper(_lazy|)] <= $#pyenv_plugins )); then
+      pyenv "$pyenv_plugins[(R)virtualenvwrapper(_lazy|)]"
+    fi
+  else
+    # Fallback to 'virtualenvwrapper' without 'pyenv' wrapper if available
+    # in '$path' or in an alternative location on a Debian based system.
+    virtenv_sources=(
+      ${(@Ov)commands[(I)virtualenvwrapper(_lazy|).sh]}
+      /usr/share/virtualenvwrapper/virtualenvwrapper(_lazy|).sh(OnN)
+    )
+    if (( $#virtenv_sources )); then
+      source "${virtenv_sources[1]}"
+    fi
+
+    unset virtenv_sources
+  fi
+
+  unset pyenv_plugins
 fi
 
 # Load PIP completion.
-if (( $+commands[pip] )); then
+if (( $#commands[(i)pip(|[23])] )); then
   cache_file="${0:h}/cache.zsh"
 
-  if [[ "$commands[pip]" -nt "$cache_file" || ! -s "$cache_file" ]]; then
+  # Detect and use one available from among 'pip', 'pip2', 'pip3' variants
+  pip_command="$commands[(i)pip(|[23])]"
+
+  if [[ "$pip_command" -nt "$cache_file" || ! -s "$cache_file" ]]; then
     # pip is slow; cache its output. And also support 'pip2', 'pip3' variants
-    pip completion --zsh | sed -e "s|compctl -K [-_[:alnum:]]* pip|& pip2 pip3|" >! "$cache_file" 2> /dev/null
+    $pip_command completion --zsh \
+      | sed -e "s|compctl -K [-_[:alnum:]]* pip|& pip2 pip3|" >! "$cache_file" 2> /dev/null
   fi
 
   source "$cache_file"
-
-  unset cache_file
-
-  # Load auto workon cwd hook
-  if zstyle -t ':prezto:module:python:virtualenv' auto-switch 'yes'; then
-    # Auto workon when changing directory
-    add-zsh-hook chpwd _python-workon-cwd
-  fi
+  unset cache_file pip_command
 fi
 
 #
@@ -120,3 +149,5 @@ fi
 #
 
 alias py='python'
+alias py2='python2'
+alias py3='python3'
