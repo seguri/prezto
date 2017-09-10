@@ -37,6 +37,7 @@ set nowritebackup
 set noswapfile
 set number
 set ruler
+set colorcolumn=+1
 
 " Syntastic
 set statusline+=%#warningmsg#
