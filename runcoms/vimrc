@@ -9,8 +9,6 @@ call vundle#begin()
 " Let Vundle manage Vundle (required). Your plugins below
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'valloric/youcompleteme'
-Plugin 'vim-syntastic/syntastic'
 
 " End of Vundle prerequisites
 call vundle#end()
@@ -39,7 +37,3 @@ set number
 set ruler
 set colorcolumn=+1
 
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
