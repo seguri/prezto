@@ -4,6 +4,7 @@
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #   Sebastian Wiesner <lunaryorn@googlemail.com>
+#   Patrick Bos <egpbos@gmail.com>
 #
 
 # Load manually installed pyenv into the shell session.
@@ -113,6 +114,20 @@ if (( $+VIRTUALENVWRAPPER_VIRTUALENV || $+commands[virtualenv] )) && \
   else
     # Fallback to 'virtualenvwrapper' without 'pyenv' wrapper if available
     # in '$path' or in an alternative location on a Debian based system.
+    #
+    # If the python-path was manually specified, use that. Otherwise, fall back
+    # to python3 then python2 in that order. This is needed to fix an issue with
+    # virtualenvwrapper when used with homebrew, as it no longer shadows the
+    # system python.
+    zstyle -s ':prezto:module:python:virtualenvwrapper' python-path '_venv_python'
+    if [[ -n "$_venv_python" ]]; then
+      export VIRTUALENVWRAPPER_PYTHON=$_venv_python
+    elif (( $+commands[python3] )); then
+      export VIRTUALENVWRAPPER_PYTHON=$commands[python3]
+    elif (( $+commands[python2] )); then
+      export VIRTUALENVWRAPPER_PYTHON=$commands[python2]
+    fi
+
     virtenv_sources=(
       ${(@Ov)commands[(I)virtualenvwrapper(_lazy|).sh]}
       /usr/share/virtualenvwrapper/virtualenvwrapper(_lazy|).sh(OnN)
@@ -129,7 +144,7 @@ fi
 
 # Load PIP completion.
 if (( $#commands[(i)pip(|[23])] )); then
-  cache_file="${0:h}/cache.zsh"
+  cache_file="${TMPDIR:-/tmp}/prezto-python-cache.$UID.zsh"
 
   # Detect and use one available from among 'pip', 'pip2', 'pip3' variants
   pip_command="$commands[(i)pip(|[23])]"
@@ -142,6 +157,19 @@ if (( $#commands[(i)pip(|[23])] )); then
 
   source "$cache_file"
   unset cache_file pip_command
+fi
+
+# Load conda into the shell session, if requested
+zstyle -T ':prezto:module:python' conda-init
+if (( $? && $+commands[conda] )); then
+  if (( $(conda ..changeps1) )); then
+    echo "To make sure Conda doesn't change your prompt (should do that in the prompt module) run:\n  conda config --set changeps1 false"
+    # TODO:
+    # We could just run this ourselves. In an exit hook
+    # (add zsh-hook zshexit [(anonymous) function]) we could then set it back
+    # to the way it was before we changed it. However, I'm not sure if this is
+    # exception safe, so left it like this for now.
+  fi
 fi
 
 #
