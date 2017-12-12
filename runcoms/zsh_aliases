@@ -1,0 +1,1 @@
+alias esl='exec /usr/local/bin/zsh -l'
