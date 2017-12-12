@@ -1,5 +1,5 @@
 [core]
-	editor = sublw
+	editor = vim
 	excludesfile = ~/.gitignore_global
 [user]
 	name = Marco Seguri
