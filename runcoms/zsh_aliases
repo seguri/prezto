@@ -41,6 +41,12 @@ alias gco='git checkout'
 alias gCa='git commit --all --verbose'
 alias gCm='git commit --message'
 
+# Push (p)
+alias gpa='git push --all'
+alias gpb='git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+alias gpA='git push --all && git push --tags'
+alias gpt='git push --tags'
+
 # Working copy (w)
 alias gwd='git diff --no-ext-diff'
 alias gwr='git reset --soft'
