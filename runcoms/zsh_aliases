@@ -1,1 +1,28 @@
+alias ai='brew install'
+alias aud='brew update'
+alias dki='docker inspect'
+alias dkni='docker network inspect'
+alias dknls='docker network ls'
+alias dkls='docker ps'
+alias dkr='docker run --detach'
+# Run interactive container and remove when exit
+alias dkR='docker run --interactive --tty --rm'
+alias dkRe='docker run --interactive --tty --rm --entrypoint /bin/bash'
 alias esl='exec /usr/local/bin/zsh -l'
+
+# DocKer Inspect Network
+function dkin {
+  docker inspect "$1" | python3 -c "import json,sys; j=json.load(sys.stdin)[0]; ns=j['NetworkSettings']; print('Gateway  : {}\nIPAddress: {}'.format(ns['Gateway'], ns['IPAddress']))"
+}
+
+function fds {
+  if [[ $1 == -d* ]]; then
+    find . -name .DS_Store -type f -delete
+  else
+    find . -name .DS_Store -type f
+  fi
+}
+
+function mkcd {
+  mkdir -p "$1" && cd "$1"
+}
