@@ -8,19 +8,21 @@ alias aud='brew update'
 #
 # Docker
 #
-alias dki='docker inspect'
-alias dkni='docker network inspect'
-alias dknls='docker network ls'
-alias dkls='docker ps'
-alias dkr='docker run --detach'
-# Run interactive container and remove when exit
-alias dkR='docker run --interactive --tty --rm'
-alias dkRe='docker run --interactive --tty --rm --entrypoint /bin/bash'
 
-# DocKer Inspect Network
+alias dki='docker inspect'
 function dkin {
   docker inspect "$1" | python3 -c "import json,sys; j=json.load(sys.stdin)[0]; ns=j['NetworkSettings']; print('Gateway  : {}\nIPAddress: {}'.format(ns['Gateway'], ns['IPAddress']))"
 }
+alias dkls='docker ps'
+
+# Network (n)
+alias dkni='docker network inspect'
+alias dknls='docker network ls'
+
+# Run (r)
+alias dkr='docker run --detach'
+alias dkR='docker run --interactive --tty --rm'
+alias dkRe='docker run --interactive --tty --rm --entrypoint /bin/bash'
 
 
 #
@@ -30,8 +32,10 @@ function dkin {
 # Branch (b)
 alias gba='git branch --all --verbose'
 alias gbc='git checkout -b' # Because this is equivalent to branch and then checkout
+alias gbd='git branch --delete'
 alias gbl='git branch --verbose'
 alias gbL='git branch --verbose --all'
+alias gbm='git branch --move'
 
 # Checkout (c)
 alias gcm='git checkout master'
@@ -39,16 +43,24 @@ alias gco='git checkout'
 
 # Commit (C)
 alias gCa='git commit --all --verbose'
+alias gCd='git commit --dry-run'
 alias gCm='git commit --message'
+
+# Merge
+alias gmm='git merge master'
 
 # Push (p)
 alias gpa='git push --all'
-alias gpb='git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+alias gpb='git push --set-upstream origin "$(git-branch-current 2> /dev/null)"' # Setting the upstream makes clear where you are pulling from
 alias gpA='git push --all && git push --tags'
 alias gpt='git push --tags'
 
+# Stash (s)
+alias gsp='git stash pop'
+
 # Working copy (w)
 alias gwd='git diff --no-ext-diff'
+alias gwdc='git diff --no-ext-diff --cached'
 alias gwr='git reset --soft'
 alias gwR='git reset --hard'
 alias gws='git status --short --ignore-submodules=all'
