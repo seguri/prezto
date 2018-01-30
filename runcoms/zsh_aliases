@@ -33,6 +33,7 @@ alias dkRe='docker run --interactive --tty --rm --entrypoint /bin/bash'
 alias gba='git branch --all --verbose'
 alias gbc='git checkout -b' # Because this is equivalent to branch and then checkout
 alias gbd='git branch --delete'
+alias gbD='git branch --delete --force'
 alias gbl='git branch --verbose'
 alias gbL='git branch --verbose --all'
 alias gbm='git branch --move'
